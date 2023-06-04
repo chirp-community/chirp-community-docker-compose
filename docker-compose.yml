@@ -2,7 +2,7 @@ version: "3.1"
 
 services:
   was:
-    image: chirp_applicationserver:latest
+    image: junmop950/chirp_applicationserver:latest
     container_name: was
     restart: always
     ports:
@@ -11,7 +11,7 @@ services:
       - chirp-bridge
 
   webServer:
-    image: chirp-web-server:latest
+    image: junmop950/chirp_webserver:latest
     container_name: web_server
     restart: always
     ports:
