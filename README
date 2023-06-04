@@ -1,5 +1,8 @@
 # 서버 실행 방법 (우분투 os 기준)
 1. `source init_server.sh` 실행 -> 정상적인 상황이라면 reboot 함.
-2. `.env`에 각종 설정 내용 기입. -> 설정 형식은 mock.env 참고.
-2. reboot 이후, `docker-compose up` 실행.
-3. 종료는 `docker-compose down`으로 수행.
+2. reboot 이후, `.env`에 각종 설정 내용 기입. -> 설정 형식은 mock.env 참고.
+`.env`는 `touch .env`으로 파일 생성을 할 수 있으며,
+내용은 `echo "{설정 내용들}" > .env`로 작성하거나
+`vim .env`로 기입하면 된다.
+3. `docker-compose up` 실행.
+4. 종료는 `docker-compose down`으로 수행.
