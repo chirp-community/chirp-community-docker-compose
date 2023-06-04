@@ -30,9 +30,17 @@ echo "(docker-compose install)[1/2]"
 sudo chmod +x /usr/local/bin/docker-compose
 echo "(docker-compose install)[2/2]"
 
+# docker-compose.yml에 적용할 .env 파일 복사.
+echo "================================"
+echo "(mock.env를 이용해 .env 파일 생성)[0/1]"
+cp mock.env .env
+echo "cat .env"
+cat .env
+echo "(mock.env를 이용해 .env 파일 생성)[1/1]"
+
 # 경로 생성 및 권한 부여
 echo "================================"
-echo "(경로 생성 및 권한 부여)[0/1]"
+echo "(경로 생성 및 권한 부여)[0/2]"
 export $(grep -v '^#' .env | xargs)
 
 function setPath {
@@ -41,8 +49,9 @@ function setPath {
         mkdir -p $DIR
         sudo chmod 777 $DIR
 }
-echo "(경로 생성 및 권한 부여)[1/1]"
+echo "(경로 생성 및 권한 부여)[1/2]"
 setPath $DIR_MOUNTED_MYSQL
+echo "(경로 생성 및 권한 부여)[2/2]"
 
 # 완벽한 적용을 위한 서버 리부트
 echo "================================"

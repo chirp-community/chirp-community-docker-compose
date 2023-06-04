@@ -2,7 +2,7 @@ version: "3.1"
 
 services:
   was:
-    image: junmop950/chirp_applicationserver:latest
+    image: ${WAS_IMAGE_NAME}:${WAS_IMAGE_VERSION}
     container_name: was
     restart: always
     ports:
@@ -11,7 +11,7 @@ services:
       - chirp-bridge
 
   webServer:
-    image: junmop950/chirp_webserver:latest
+    image: ${WEB_SERVER_IMAGE_NAME}:${WEB_SERVER_VERSION}
     container_name: web_server
     restart: always
     ports:
@@ -20,7 +20,7 @@ services:
       - chirp-bridge
 
   mysql:
-    image: mysql:8-oracle
+    image: ${MYSQL_DB_NAME}:${MYSQL_DB_IMAGE_VERSION}
     container_name: mysql_db
     restart: always
     environment:
@@ -34,7 +34,7 @@ services:
       - ${DIR_MOUNTED_MYSQL}:/var/lib/mysql
 
   redis:
-    image: redis:latest
+    image: ${REDIS_DB_IMAGE_NAME}:${REDIS_DB_IMAGE_VERSION}
     container_name: redis_db
     restart: always
     ports:
