@@ -1,0 +1,47 @@
+version: "3.1"
+
+services:
+  was:
+    image: chirp_applicationserver:latest
+    container_name: was
+    restart: always
+    ports:
+      - 8080:8080
+    networks:
+      - chirp-bridge
+
+  webServer:
+    image: chirp-web-server:latest
+    container_name: web_server
+    restart: always
+    ports:
+      - 80:80
+    networks:
+      - chirp-bridge
+
+  mysql:
+    image: mysql:8-oracle
+    container_name: mysql_db
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+    ports:
+      - 3306:3306
+    networks:
+      - chirp-bridge
+    volumes:
+      - ${DIR_MOUNTED_MYSQL}:/var/lib/mysql
+
+  redis:
+    image: redis:latest
+    container_name: redis_db
+    restart: always
+    ports:
+      - 6379:6379
+    networks:
+      - chirp-bridge
+
+networks:
+  chirp-bridge:
+    driver: bridge

@@ -1,0 +1,5 @@
+# 서버 실행 방법 (우분투 os 기준)
+1. `source init_server.sh` 실행 -> 정상적인 상황이라면 reboot 함.
+2. `.env`에 각종 설정 내용 기입. -> 설정 형식은 mock.env 참고.
+2. reboot 이후, `docker-compose up` 실행.
+3. 종료는 `docker-compose down`으로 수행.
